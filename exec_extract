@@ -1,1 +1,2 @@
-php ../extract.php $1 > /dev/null &
+DIRECTORY=$(cd `dirname $0` && pwd);
+php $DIRECTORY/extract.php $1 > /dev/null &

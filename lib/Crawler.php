@@ -17,7 +17,7 @@ class Crawler
 
     private $_paramSearchDepth = -1;
     private $_paramMaxUrlList = 1000;
-    private $_paramDirectory = "./www/extracts";
+    private $_paramDirectory = "www/extracts";
     private $_paramThumbsize = "100x100";
     private $_paramImagesize = "1000x760";
     private $_paramFile = "url.txt";
@@ -136,6 +136,7 @@ class Crawler
         $handle = fopen($this->_paramDirectory . DIRECTORY_SEPARATOR . $this->_paramFile, 'w');
         fputs($handle, $url);
         fclose($handle);
+        chmod( $this->_paramDirectory . DIRECTORY_SEPARATOR . $this->_paramFile, 0777 );
     }
 
     /**
