@@ -1,0 +1,1 @@
+php ../extract.php $1 > /dev/null &
