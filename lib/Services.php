@@ -73,7 +73,7 @@ class Services
             if (! sizeof( $imagesList ) ) throw new Exception("No image in the directory");
             $thumbsList = glob( $this->_paramDirectory . DIRECTORY_SEPARATOR . "thumb_*" );
             $key = rand(0, sizeof($imagesList) - 1);
-            return array("image" => $imagesList[$key], "thumb" => $thumbsList[$key]);
+            return array("image" => basename( $imagesList[$key]), "thumb" => basename( $thumbsList[$key]) );
         }
         throw new Exception("Directory does not exist");
     }
@@ -104,17 +104,19 @@ class Services
      * @access private
      * @return void
      */
-    private function _delete($arguments) {
+    private function _postDelete($arguments) {
         foreach( array('image', 'thumb') as $arg ) {
             if( isset( $arguments[$arg] ) && 
-                file_exists( $arguments[$arg] ) && 
-                is_file( $arguments[$arg] ) && 
-                is_writable( $arguments[$arg] ) ) {
+                file_exists( $this->_paramDirectory . DIRECTORY_SEPARATOR . $arguments[$arg] ) && 
+                is_file( $this->_paramDirectory . DIRECTORY_SEPARATOR . $arguments[$arg] ) && 
+                is_writable( $this->_paramDirectory . DIRECTORY_SEPARATOR . $arguments[$arg] ) ) {
 
-                unlink($arguments[$arg]);
+                unlink($this->_paramDirectory . DIRECTORY_SEPARATOR . $arguments[$arg]);
+            } else {
+                throw new Exception("Image cannot be deleted");
             }
         }
-        return true;
+        return array();
     }
 
     /**

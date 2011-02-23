@@ -2,8 +2,10 @@ var ImageMerger = {
     panelId: 'image-panel',
     serviceUrl: './call.php',
     pause: 2000,
+    deletePause: 10000,
     image: null,
     isActive: false,
+    imagesDir: './extracts/',
     imageBlend: {
         mode: ['normal', 'multiply', 'lighten', 'darken', 'lightercolor', 'darkercolor', 'difference', 'screen', 'exclusion', 'overlay', 'softlight', 'hardlight', 'colordodge', 'colorburn', 'lineardodge', 'linearburn', 'linearlight', 'vividlight', 'pinlight', 'hardmix'],
         amount: 'f/0-1'
@@ -27,9 +29,12 @@ var ImageMerger = {
                 if($('#image')) {
                     $('#image').remove();
                 }
-                $('#image-container').append('<img id="image" alt="" src="/' + json.data.image  +  '" />');
+                $('#image-container').append('<img id="image" alt="" src="/' + myself.imagesDir + json.data.image + '" />');
                 myself.merge();
-                $.ajax({url:myself.serviceUrl, type:'DELETE', data:{'image':json.data.image, 'thumb':json.data.thumb}});
+                setTimeout(function() {
+                    $.ajax({url:myself.serviceUrl, type:'POST', 
+                        data:{'name':'delete', 'image':json.data.image, 'thumb':json.data.thumb}});
+                }, myself.deletePause);
             }
         });
     },
