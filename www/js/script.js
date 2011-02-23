@@ -5,7 +5,7 @@ var ImageMerger = {
     deletePause: 10000,
     image: null,
     isActive: false,
-    imagesDir: './extracts/',
+    imagesDir: 'extracts/',
     imageBlend: {
         mode: ['normal', 'multiply', 'lighten', 'darken', 'lightercolor', 'darkercolor', 'difference', 'screen', 'exclusion', 'overlay', 'softlight', 'hardlight', 'colordodge', 'colorburn', 'lineardodge', 'linearburn', 'linearlight', 'vividlight', 'pinlight', 'hardmix'],
         amount: 'f/0-1'
@@ -29,7 +29,7 @@ var ImageMerger = {
                 if($('#image')) {
                     $('#image').remove();
                 }
-                $('#image-container').append('<img id="image" alt="" src="/' + myself.imagesDir + json.data.image + '" />');
+                $('#image-container').append('<img id="image" alt="" src="' + myself.imagesDir + json.data.image + '" />');
                 myself.merge();
                 setTimeout(function() {
                     $.ajax({url:myself.serviceUrl, type:'POST', 
