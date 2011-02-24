@@ -28,6 +28,10 @@
         </form>
     </div>
     <div id="about-panel" style="display:none;">
+        <h1>Image Merger V 1.0</h1>
+        <p>mage Merger is a small application which crawls images from a particular url and merge them every 2 seconds on the main panel. This is an HTML 5 project, therefore it must be seen with a new browser as Chrome, Chromium or Firefox. You can add a new url on the "Config" tab, it appears when you put your mouse on the top of the page.</p>
+        <p>It is made for the Pink Poseidon exhibition from 24th of Febrary to the 5th of March at La Place Forte, Paris.</p>
+        <p><a href="https://github.com/vivien-ascii/images-merger/">Project on Github</a></p>
     </div>
     <ul id="navigation">
         <li><a href="about-panel">About</a></li>
