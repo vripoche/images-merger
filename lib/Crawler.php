@@ -20,7 +20,7 @@ class Crawler
     private $_paramMaxImages   = 20;
     private $_paramDirectory   = "www/extracts";
     private $_paramThumbsize   = "100x100";
-    private $_paramImagesize   = "1000x760";
+    private $_paramImagesize   = "750x562";
     private $_paramFile        = "url.txt";
 
     private $_started  = false;
