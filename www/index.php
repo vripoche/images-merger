@@ -42,7 +42,7 @@
 <img id="image-panel" src="./img/image.jpg" alt="" />
 <div id="image-container"></div>
 
-<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
 <script type="text/javascript" src="./js/pixastic.custom.js"></script>
 <script type="text/javascript" src="./js/script.js"></script>
 
