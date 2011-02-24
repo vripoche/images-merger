@@ -31,10 +31,10 @@ var ImageMerger = {
                 }
                 $('#image-container').append('<img id="image" alt="" src="' + myself.imagesDir + json.data.image + '" />');
                 myself.merge();
-                setTimeout(function() {
+                /*setTimeout(function() {
                     $.ajax({url:myself.serviceUrl, type:'POST', 
                         data:{'name':'delete', 'image':json.data.image, 'thumb':json.data.thumb}});
-                }, myself.deletePause);
+                }, myself.deletePause);*/
             }
         });
     },

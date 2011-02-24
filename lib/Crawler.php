@@ -16,13 +16,14 @@ class Crawler
 {
 
     private $_paramSearchDepth = -1;
-    private $_paramMaxUrlList = 1000;
-    private $_paramDirectory = "www/extracts";
-    private $_paramThumbsize = "100x100";
-    private $_paramImagesize = "1000x760";
-    private $_paramFile = "url.txt";
+    private $_paramMaxUrlList  = 1000;
+    private $_paramMaxImages   = 200;
+    private $_paramDirectory   = "www/extracts";
+    private $_paramThumbsize   = "100x100";
+    private $_paramImagesize   = "1000x760";
+    private $_paramFile        = "url.txt";
 
-    private $_started = false;
+    private $_started  = false;
     private $_urlsList = array();
 
     /**
@@ -196,8 +197,30 @@ class Crawler
             } catch (Exception $e) {
                 throw $e;
             }
+
+            $this->_deleteOlderImage(); 
+            
         }
     } 
+
+    /**
+     * _deleteOlderImage 
+     * 
+     * @access private
+     * @return void
+     */
+    private function _deleteOlderImage() {
+        $imagesList = glob( $this->_paramDirectory . DIRECTORY_SEPARATOR . "image_*" );
+        if( sizeof( $imagesList ) > $this->_paramMaxImages ) {
+            asort( $imagesList );
+            $olderImage = array_shift($imagesList);
+            $olderThumb = str_replace('image_', 'thumb_', $olderImage);
+            if(file_exists( $olderImage ) && is_writable( $olderImage ) )
+                unlink( $olderImage );
+            if(file_exists( $olderThumb ) && is_writable( $olderThumb ) )
+                unlink( $olderThumb );
+        }
+    }
 
     /**
      * _addUrl 
