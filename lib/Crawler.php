@@ -17,7 +17,7 @@ class Crawler
 
     private $_paramSearchDepth = -1;
     private $_paramMaxUrlList  = 1000;
-    private $_paramMaxImages   = 200;
+    private $_paramMaxImages   = 20;
     private $_paramDirectory   = "www/extracts";
     private $_paramThumbsize   = "100x100";
     private $_paramImagesize   = "1000x760";
