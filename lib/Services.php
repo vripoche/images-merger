@@ -68,7 +68,7 @@ class Services
      * @return void
      */
     private function _get($arguments) {
-        if( file_exists( $this->_paramDirectory ) && is_dir( $this->_paramDirectory ) ) {
+        if( true && file_exists( $this->_paramDirectory ) && is_dir( $this->_paramDirectory ) ) {
             $imagesList = glob( $this->_paramDirectory . DIRECTORY_SEPARATOR . "image_*" );
             if (! sizeof( $imagesList ) ) throw new Exception("No image in the directory");
             $thumbsList = glob( $this->_paramDirectory . DIRECTORY_SEPARATOR . "thumb_*" );
